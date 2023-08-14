@@ -79,8 +79,15 @@ function togglePortfolioPopup() {
 }
 
 document
-  .querySelector('.portfolio__popup-close')
-  .addEventListener('click', togglePortfolioPopup);
+  .querySelector('.portfolio__popup')
+  .addEventListener('click', function (e) {
+    if (e.target.closest('.uil-times')) {
+      togglePortfolioPopup();
+      return;
+    }
+    if (e.target.closest('.open .portfolio__popup-inner')) return;
+    else togglePortfolioPopup();
+  });
 
 function portfolioItemDetails(portfolioItem) {
   document.querySelector('.pp__thumbnail img').src =
@@ -163,9 +170,9 @@ function navHighlightor() {
   //  SHOW SCROLL UP
   const scrollUp = document.querySelector('.scroll-up');
   if (scrollY > 600) {
-    scrollUp.classList.add('active')
+    scrollUp.classList.add('active');
   } else {
-    scrollUp.classList.remove('active')
+    scrollUp.classList.remove('active');
   }
 }
 
@@ -221,3 +228,54 @@ const linkedinBtn = document.querySelector('.linkedin-btn');
 linkedinBtn.addEventListener('click', function () {
   window.open('https://www.linkedin.com/in/chnoumanejaz/', '_blank');
 });
+
+// Theme changing management
+
+const settingBtn = document.querySelector('.setting-btn');
+const themeMenu = document.querySelector('.theme-menu');
+
+const toggleSettings = function () {
+  themeMenu.classList.toggle('hidden');
+  if (settingBtn.innerHTML === `<i class="uil uil-times"></i>`) {
+    settingBtn.innerHTML = `<i class="uil uil-setting"></i>`;
+  } else {
+    settingBtn.innerHTML = `<i class="uil uil-times"></i>`;
+  }
+};
+
+settingBtn.addEventListener('click', toggleSettings);
+const root = document.documentElement;
+
+themeMenu?.addEventListener('click', function (e) {
+  if (e.target.closest('.red')) {
+    root.style.setProperty('--skin-color', 'hsl(0, 96%, 43%)');
+    toggleSettings();
+    localStorage.setItem('theme', 'red');
+  } else if (e.target.closest('.blue')) {
+    root.style.setProperty('--skin-color', 'hsl(229, 100%, 46%)');
+    toggleSettings();
+    localStorage.setItem('theme', 'blue');
+  } else if (e.target.closest('.orange')) {
+    root.style.setProperty('--skin-color', 'hsl(29, 100%, 46%)');
+    toggleSettings();
+    localStorage.setItem('theme', 'orange');
+  } else if (e.target.closest('.default')) {
+    root.style.setProperty('--skin-color', 'hsl(310, 98%, 44%)');
+    toggleSettings();
+    localStorage.setItem('theme', 'default');
+  }
+});
+
+// Default theme load from local storage
+if (
+  localStorage.getItem('theme') === 'default' ||
+  localStorage.getItem('theme') === null
+) {
+  root.style.setProperty('--skin-color', 'hsl(310, 98%, 44%)');
+} else if (localStorage.getItem('theme') === 'red') {
+  root.style.setProperty('--skin-color', 'hsl(0, 96%, 43%)');
+} else if (localStorage.getItem('theme') === 'orange') {
+  root.style.setProperty('--skin-color', 'hsl(29, 100%, 46%)');
+} else if (localStorage.getItem('theme') === 'blue') {
+  root.style.setProperty('--skin-color', 'hsl(229, 100%, 46%)');
+}
