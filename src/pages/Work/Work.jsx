@@ -17,7 +17,8 @@ const Work = () => {
 
     client.fetch(query).then(data => {
       setWorks(data);
-      setFilterWork(data);
+      const sortedData = data.sort((a, b) => b.projectNo - a.projectNo);
+      setFilterWork(sortedData);
     });
   }, []);
 
@@ -33,7 +34,7 @@ const Work = () => {
       } else {
         setFilterWork(works.filter(work => work.tags.includes(item)));
       }
-    }, 500);
+    }, 300);
   };
 
   return (
@@ -43,7 +44,7 @@ const Work = () => {
       </h2>
 
       <div className="app__work-filter">
-        {['All', 'ReactJS',  'Web App', 'Design', 'Mini', 'Game', ].map(
+        {['All', 'ReactJS', 'Web App', 'Design', 'Mini', 'Game'].map(
           (item, index) => (
             <div
               key={index}
@@ -107,6 +108,14 @@ const Work = () => {
               <p className="p-text" style={{ marginTop: 10 }}>
                 {work.description}
               </p>
+
+              {work.recentTag ? (
+                <div
+                  className="app__work-recent app__flex"
+                  style={{ backgroundColor: work.recentColor}}>
+                  <p className="p-text">{work.recentTag}</p>
+                </div>
+              ) : null}
 
               <div className="app__work-tag app__flex">
                 <p className="p-text">{work.tags[0]}</p>

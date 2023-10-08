@@ -50,7 +50,7 @@
     width: 270px;
     flex-direction: column;
 
-    margin: 2rem;
+    margin: 1.2rem;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #fff;
@@ -107,6 +107,9 @@
   border-radius: 0.5rem;
   opacity: 0;
   transition: all 0.3s ease;
+  @media screen and (max-width: 600px) {
+    opacity: 0.8;
+  }
 
   div {
     width: 50px;
@@ -134,7 +137,7 @@
   width: 100%;
   position: relative;
   flex-direction: column;
-   
+
   h4 {
     margin-top: 1rem;
     line-height: 1.5;
@@ -151,5 +154,16 @@
     border-radius: 10px;
     background-color: #fff;
     top: -25px;
+  }
+  .app__work-recent {
+    position: absolute;
+    padding: 0.2rem 1rem;
+    border-radius: 0 0 10px 10px;
+     
+    color: #fff;
+    top: -15.4rem;
+    & p{
+      color: #fff;
+    }
   }
 }
