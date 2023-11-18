@@ -45,7 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   .app__work-item {
     width: 270px;
     flex-direction: column;
@@ -158,11 +158,12 @@
   .app__work-recent {
     position: absolute;
     padding: 0.2rem 1rem;
-    border-radius: 0 0 10px 10px;
-     
+    border-radius: 0 10px 10px 0;
     color: #fff;
-    top: -15.4rem;
-    & p{
+    font-weight: 500;
+    top: -14rem;
+    left: 0;
+    & p {
       color: #fff;
     }
   }

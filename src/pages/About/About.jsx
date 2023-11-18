@@ -14,10 +14,7 @@ function About() {
   return (
     <>
       <h2 className="head-text">
-        Good <span>Design </span>
-        Equals <br />
-        Good
-        <span> Business</span>
+        What I can <span> Do </span>
       </h2>
 
       <div className="app__profiles">
@@ -27,15 +24,17 @@ function About() {
             transition={{ duration: 0.2, type: 'tween' }}
             className="app__profile-item"
             key={about.title + index}>
-            <div>
+            <div className="image-about">
               <img src={urlFor(about.imgUrl)} alt={about.title} />
             </div>
-            <h2 className="bold-text" style={{ marginTop: 20 }}>
-              {about.title}
-            </h2>
-            <p className="p-text" style={{ marginTop: 10 }}>
-              {about.description}
-            </p>
+            <div>
+              <h2 className="bold-text" style={{ marginTop: 20 }}>
+                {about.title}
+              </h2>
+              <p className="p-text" style={{ marginTop: 5 }}>
+                {about.description}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -43,7 +42,7 @@ function About() {
   );
 }
 
- export default AppWrap(
+export default AppWrap(
   MotionWrap(About, 'app__about'),
   'about',
   'app__whitebg'
