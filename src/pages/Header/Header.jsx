@@ -31,8 +31,8 @@ function Header() {
             </div>
           </div>
           <div className="tag-cmp app__flex">
-            <p className="p-text">Frontend Developer</p>
-            <p className="p-text">Freelancer</p>
+            <p className="p-text"> React Developer ⚛️ </p>
+            <p className="p-text"> 👨‍💻 Freelancer </p>
           </div>
           <div className="tag-cmp tag-cv app__flex">
             <CV />
