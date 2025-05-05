@@ -1,10 +1,10 @@
 # Hi 👋, I'm Nouman Ejaz
 
-### A young passionate frontend developer from Pakistan
+### A young passionate Full stack developer.
 
 ![Profile Views](https://komarev.com/ghpvc/?username=chnoumanejaz&label=Profile%20views&color=0e75b6&style=flat)
 
-🔭 I’m currently working on **some library :)**<br>🌱 I’m currently learning **Data science**<br>💬 Ask me about **React, Javascript, Typescript, Next**<br>📫 How to reach me: **noumanejaz92@gmail.com**<br>💼 Portfolio **<a href="https://noumanejaz.netlify.app">Nouman Ejaz</a>**
+🔭 I’m currently working on **some library :)**<br>🌱 I’m currently learning **Data science**<br>💬 Ask me about **React, Javascript, Typescript, Next, Python, Django**<br>📫 How to reach me: **noumanejaz92@gmail.com**<br>💼 Portfolio **<a href="https://noumanejaz.netlify.app">Nouman Ejaz</a>**
 
 ## 🌐 Socials:
 
