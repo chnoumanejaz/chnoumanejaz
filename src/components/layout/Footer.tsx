@@ -19,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border overflow-hidden my-[24px]">
-      <div className="container mx-auto px-6 pt-16 pb-2 my-0 py-[52px]">
+      <div className="container mx-auto px-4 sm:px-6 pt-16 pb-2 my-0 py-[52px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* CTA / Engage */}
           <div className="md:col-span-5">

@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function ToolsSection() {
   return (
-    <section id="tools" className="pt-10 pb-20 mx-[24px]">
+    <section id="tools" className="pt-10 pb-20">
       <ScrollAnimation>
         <SectionHeading
           title="Tools"

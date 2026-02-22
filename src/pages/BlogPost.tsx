@@ -61,7 +61,7 @@ export default function BlogPost() {
       />
       <Navbar />
 
-      <main className="container mx-auto px-6 pt-28 pb-20 max-w-5xl">
+      <main className="container mx-auto px-4 sm:px-6 pt-28 pb-20 max-w-5xl">
         {/* Back link */}
         <Link
           to="/"
