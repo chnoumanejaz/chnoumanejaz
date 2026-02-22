@@ -98,8 +98,9 @@ export function Footer() {
         <div
           className="bg-gradient-to-b from-foreground/[0.06] to-transparent bg-clip-text"
         >
-          <span className="block font-heading text-[4rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[18rem] font-bold text-transparent leading-[0.85] whitespace-nowrap">
-            Nouman Ejaz
+          <span className="block font-heading text-[4rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[18rem] font-bold text-transparent leading-[0.85]">
+            <span className="sm:hidden">Nouman</span>
+            <span className="hidden sm:inline">Nouman Ejaz</span>
           </span>
         </div>
       </div>
