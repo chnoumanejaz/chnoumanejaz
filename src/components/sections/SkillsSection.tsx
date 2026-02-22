@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 
 export function SkillsSection() {
   return (
-    <ParallaxSection speed={0.08}>
-      <section id="skills" className="py-20">
+    <ParallaxSection speed={0.08} id="skills">
+      <section className="py-20">
         <ScrollAnimation>
           <SectionHeading
             title="Skills & Technologies"

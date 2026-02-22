@@ -6,8 +6,8 @@ import { ParallaxSection } from "@/components/shared/ParallaxSection";
 
 export function ExperienceSection() {
   return (
-    <ParallaxSection speed={0.05}>
-      <section id="experience" className="py-20">
+    <ParallaxSection speed={0.05} id="experience">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <ScrollAnimation>
             <SectionHeading
