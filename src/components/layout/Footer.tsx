@@ -4,8 +4,8 @@ import { personalData } from "@/data/personal";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border overflow-hidden">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="border-t border-border overflow-hidden my-[24px]">
+      <div className="container mx-auto px-6 pt-16 pb-2 my-0 py-[52px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* CTA / Engage */}
           <div className="md:col-span-5">
@@ -20,8 +20,8 @@ export function Footer() {
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 mt-5 text-primary font-medium hover:underline underline-offset-4 transition-all"
-            >
+              className="inline-flex items-center gap-2 mt-5 text-primary font-medium hover:underline underline-offset-4 transition-all">
+
               Get in touch <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
@@ -31,17 +31,17 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Navigate</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "About", href: "#about" },
-                { label: "Experience", href: "#experience" },
-                { label: "Projects", href: "#projects" },
-                { label: "Skills", href: "#skills" },
-              ].map((link) => (
-                <li key={link.label}>
+              { label: "About", href: "#about" },
+              { label: "Experience", href: "#experience" },
+              { label: "Projects", href: "#projects" },
+              { label: "Skills", href: "#skills" }].
+              map((link) =>
+              <li key={link.label}>
                   <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
                   </a>
                 </li>
-              ))}
+              )}
             </ul>
           </div>
 
@@ -49,22 +49,22 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Resources</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Blog", href: "/blog" },
-                { label: "Resume", href: personalData.resumeUrl },
-                { label: "Contact", href: "#contact" },
-              ].map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("/") ? (
-                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              { label: "Blog", href: "/blog" },
+              { label: "Resume", href: personalData.resumeUrl },
+              { label: "Contact", href: "#contact" }].
+              map((link) =>
+              <li key={link.label}>
+                  {link.href.startsWith("/") ?
+                <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                       {link.label}
-                    </Link>
-                  ) : (
-                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    </Link> :
+
+                <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                       {link.label}
                     </a>
-                  )}
+                }
                 </li>
-              ))}
+              )}
             </ul>
           </div>
 
@@ -72,21 +72,21 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Connect</h4>
             <div className="flex items-center gap-2">
               {[
-                { icon: Github, href: personalData.social.github },
-                { icon: Linkedin, href: personalData.social.linkedin },
-                { icon: Twitter, href: personalData.social.twitter },
-                { icon: Mail, href: personalData.social.email },
-              ].map(({ icon: Icon, href }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                >
+              { icon: Github, href: personalData.social.github },
+              { icon: Linkedin, href: personalData.social.linkedin },
+              { icon: Twitter, href: personalData.social.twitter },
+              { icon: Mail, href: personalData.social.email }].
+              map(({ icon: Icon, href }, i) =>
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+
                   <Icon className="h-4 w-4" />
                 </a>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -102,6 +102,6 @@ export function Footer() {
           </span>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }

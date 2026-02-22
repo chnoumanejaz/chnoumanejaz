@@ -11,17 +11,17 @@ const iconMap: Record<string, React.ElementType> = {
   Braces,
   Palette,
   SearchCode,
-  Globe,
+  Globe
 };
 
 export function ToolsSection() {
   return (
-    <section id="tools" className="py-20">
+    <section id="tools" className="py-20 mx-[24px]">
       <ScrollAnimation>
         <SectionHeading
           title="Tools"
-          subtitle="Useful tools I've built to make developer life easier."
-        />
+          subtitle="Useful tools I've built to make developer life easier." />
+
       </ScrollAnimation>
 
       <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
@@ -34,8 +34,8 @@ export function ToolsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block h-full"
-                whileHover={{ y: -4 }}
-              >
+                whileHover={{ y: -4 }}>
+
                 <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/30 transition-all duration-500 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-3">
                     <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
@@ -53,16 +53,16 @@ export function ToolsSection() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mt-4">
-                    {tool.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-[10px] uppercase tracking-wider font-normal">
+                    {tool.tags.map((tag) =>
+                    <Badge key={tag} variant="secondary" className="text-[10px] uppercase tracking-wider font-normal">
                         {tag}
                       </Badge>
-                    ))}
+                    )}
                   </div>
                 </div>
               </motion.a>
-            </StaggerItem>
-          );
+            </StaggerItem>);
+
         })}
       </StaggerContainer>
 
@@ -73,6 +73,6 @@ export function ToolsSection() {
           </Link>
         </Button>
       </div>
-    </section>
-  );
+    </section>);
+
 }
