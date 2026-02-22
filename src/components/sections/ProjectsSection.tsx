@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { ExternalLink, Github, Eye, X, Lightbulb, Wrench, Trophy } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData, Project } from "@/data/projects";
@@ -190,11 +191,14 @@ export function ProjectsSection() {
           </StaggerContainer>
         </div>
 
-        <AnimatePresence>
-          {selectedProject && (
-            <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-          )}
-        </AnimatePresence>
+        {createPortal(
+          <AnimatePresence>
+            {selectedProject && (
+              <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
       </section>
     </ParallaxSection>
   );
