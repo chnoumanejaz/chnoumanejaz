@@ -32,8 +32,10 @@ const Index = () => {
               <HeroSection />
               <ExperienceSection />
               <ProjectsSection />
-              <SkillsSection />
-              <ToolsSection />
+              <div className="space-y-0">
+                <SkillsSection />
+                <ToolsSection />
+              </div>
               <BlogSection />
               <ContactSection />
             </div>
