@@ -15,7 +15,7 @@ export function useActiveSection() {
           setActiveSection(visible[0].target.id);
         }
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5] }
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.1] }
     );
 
     sectionIds.forEach((id) => {
