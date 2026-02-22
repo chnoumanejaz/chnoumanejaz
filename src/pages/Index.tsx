@@ -4,6 +4,7 @@ import { HeroSection, HeroSidebar } from "@/components/sections/HeroSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ToolsSection } from "@/components/sections/ToolsSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
@@ -30,6 +31,7 @@ const Index = () => {
               <ExperienceSection />
               <ProjectsSection />
               <SkillsSection />
+              <ToolsSection />
               <BlogSection />
               <ContactSection />
             </div>
