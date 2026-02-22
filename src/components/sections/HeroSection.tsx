@@ -22,7 +22,7 @@ function StatCounter({ value, label, index }: {value: string;label: string;index
 
 export function HeroSidebar() {
   return (
-    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg py-[32px]">
+    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg py-[32px]" style={{ marginTop: 'calc((100vh - 28rem) / 2)' }}>
       <div className="relative w-28 h-28 mx-auto mb-5">
         <motion.div
           className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
