@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -11,6 +12,20 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 
 const Index = () => {
+  const [pastHero, setPastHero] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+        setPastHero(heroBottom < window.innerHeight);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <ScrollProgress />
@@ -18,8 +33,12 @@ const Index = () => {
       <main>
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Sticky sidebar - desktop only, centered with hero */}
-            <div className="hidden lg:flex lg:col-span-4 min-h-screen items-center pt-20 pb-16 sticky top-0 self-start">
+            {/* Sticky sidebar - desktop only */}
+            <div
+              className={`hidden lg:flex lg:col-span-4 self-start sticky items-center w-full transition-all duration-500 ${
+                pastHero ? "top-24 min-h-0 pt-0 pb-0" : "top-0 min-h-screen pt-20 pb-16"
+              }`}
+            >
               <div className="w-full">
                 <ScrollAnimation animation="slide-in-left">
                   <HeroSidebar />
@@ -28,7 +47,7 @@ const Index = () => {
             </div>
 
             {/* Main content */}
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8" ref={heroRef}>
               <HeroSection />
               <ExperienceSection />
               <ProjectsSection />
