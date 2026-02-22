@@ -14,7 +14,7 @@ const Index = () => {
       <Navbar />
       <main>
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Sticky sidebar - desktop only */}
             <div className="hidden lg:block lg:col-span-4">
               <div className="sticky top-24">

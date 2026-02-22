@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border overflow-hidden">
       {/* Large background name */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden px-6">
-        <span className="font-heading text-[8rem] sm:text-[12rem] lg:text-[16rem] font-bold text-foreground/[0.03] leading-none whitespace-nowrap max-w-full overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span className="font-heading text-[12rem] sm:text-[16rem] lg:text-[20rem] font-bold text-foreground/[0.03] leading-none whitespace-nowrap">
           Nouman Ejaz
         </span>
       </div>
@@ -33,7 +33,47 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Connect */}
+          {/* Quick links */}
+          <div className="md:col-span-2 md:col-start-7">
+            <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Navigate</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: "About", href: "#about" },
+                { label: "Experience", href: "#experience" },
+                { label: "Projects", href: "#projects" },
+                { label: "Skills", href: "#skills" },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Resources</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: "Blog", href: "/blog" },
+                { label: "Resume", href: personalData.resumeUrl },
+                { label: "Contact", href: "#contact" },
+              ].map((link) => (
+                <li key={link.label}>
+                  {link.href.startsWith("/") ? (
+                    <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="md:col-span-2">
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Connect</h4>
