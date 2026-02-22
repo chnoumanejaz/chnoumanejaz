@@ -16,8 +16,8 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Sticky sidebar - desktop only */}
-            <div className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-24">
+            <div className="hidden lg:block lg:col-span-4 pt-28">
+              <div className="sticky top-28">
                 <ScrollAnimation animation="slide-in-left">
                   <HeroSidebar />
                 </ScrollAnimation>
