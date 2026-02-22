@@ -9,13 +9,13 @@ import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 function StatCounter({ value, label, index }: { value: string; label: string; index: number }) {
   return (
     <motion.div
-      className="text-center"
+      className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/60 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 + index * 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="font-heading text-2xl sm:text-3xl font-bold text-primary">{value}</div>
-      <div className="text-xs sm:text-sm text-muted-foreground mt-1">{label}</div>
+      <span className="font-heading text-lg sm:text-xl font-bold text-primary">{value}</span>
+      <span className="text-xs text-muted-foreground">{label}</span>
     </motion.div>
   );
 }
@@ -122,7 +122,7 @@ export function HeroSection() {
           </ScrollAnimation>
 
           <motion.div
-            className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 p-6 bg-card border border-border rounded-2xl"
+            className="mt-10 inline-flex flex-wrap items-center gap-3 sm:gap-4 p-3 bg-card/80 backdrop-blur-sm border border-border rounded-full shadow-lg shadow-primary/5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
