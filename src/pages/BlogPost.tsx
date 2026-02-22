@@ -3,16 +3,20 @@ import { ArrowLeft, Calendar, Clock, ChevronLeft, ChevronRight } from "lucide-re
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ghcolors } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getBlogPost, blogPosts } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { HeartButton } from "@/components/blog/HeartButton";
+import { CodeCopyButton } from "@/components/blog/CodeCopyButton";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useTheme } from "next-themes";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
+  const { resolvedTheme } = useTheme();
   const post = getBlogPost(slug || "");
 
   if (!post) {
@@ -93,16 +97,22 @@ export default function BlogPost() {
                   code({ className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className || "");
                     const codeString = String(children).replace(/\n$/, "");
-                    return match ? (
-                      <SyntaxHighlighter
-                        style={ghcolors}
-                        language={match[1]}
-                        PreTag="div"
-                        className="!rounded-xl !text-sm"
-                      >
-                        {codeString}
-                      </SyntaxHighlighter>
-                    ) : (
+                    if (match) {
+                      return (
+                        <div className="relative group">
+                          <CodeCopyButton code={codeString} />
+                          <SyntaxHighlighter
+                            style={resolvedTheme === "dark" ? oneDark : ghcolors}
+                            language={match[1]}
+                            PreTag="div"
+                            className="!rounded-xl !text-sm"
+                          >
+                            {codeString}
+                          </SyntaxHighlighter>
+                        </div>
+                      );
+                    }
+                    return (
                       <code className={className} {...props}>
                         {children}
                       </code>
