@@ -118,9 +118,9 @@ export function HeroSection() {
           <ScrollAnimation animation="fade-up" delay={200}>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
               I'm a passionate software engineer with{" "}
-              <span className="text-primary font-semibold">5+ years of experience</span>{" "}
+              <span className="text-foreground font-semibold">5+ years of experience</span>{" "}
               crafting performant, accessible, and beautiful web applications.{" "}
-              <span className="text-primary font-semibold">I love turning ideas into reality</span>{" "}
+              <span className="text-foreground font-semibold">I love turning ideas into reality</span>{" "}
               through clean code and thoughtful design.
             </p>
           </ScrollAnimation>
