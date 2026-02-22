@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { ghcolors } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getBlogPost, blogPosts } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
 import { TableOfContents } from "@/components/blog/TableOfContents";
@@ -87,6 +89,24 @@ export default function BlogPost() {
                     const text = String(children);
                     const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
                     return <h3 id={id} {...props}>{children}</h3>;
+                  },
+                  code({ className, children, ...props }: any) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    const codeString = String(children).replace(/\n$/, "");
+                    return match ? (
+                      <SyntaxHighlighter
+                        style={ghcolors}
+                        language={match[1]}
+                        PreTag="div"
+                        className="!rounded-xl !text-sm"
+                      >
+                        {codeString}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
                   },
                 }}
               >
