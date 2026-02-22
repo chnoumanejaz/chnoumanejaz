@@ -83,7 +83,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   return (
     <>
       {/* Desktop TOC */}
-      <aside className="hidden lg:block sticky top-28 w-64 shrink-0">
+      <aside className="hidden lg:block sticky top-24 w-64 shrink-0">
         <h4 className="font-heading text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
           Table of Contents
         </h4>
