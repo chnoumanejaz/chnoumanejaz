@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -14,6 +15,17 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 const Index = () => {
   const [pastHero, setPastHero] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {

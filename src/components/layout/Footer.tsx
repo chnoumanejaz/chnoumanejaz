@@ -1,8 +1,22 @@
 import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { personalData } from "@/data/personal";
 
 export function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+    } else {
+      const el = document.getElementById(href.replace("#", ""));
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="border-t border-border overflow-hidden my-[24px]">
       <div className="container mx-auto px-6 pt-16 pb-2 my-0 py-[52px]">
@@ -20,6 +34,7 @@ export function Footer() {
             </p>
             <a
               href="#contact"
+              onClick={(e) => handleHashClick(e, "#contact")}
               className="inline-flex items-center gap-2 mt-5 text-primary font-medium hover:underline underline-offset-4 transition-all">
 
               Get in touch <ArrowUpRight className="h-4 w-4" />
@@ -37,7 +52,7 @@ export function Footer() {
               { label: "Skills", href: "#skills" }].
               map((link) =>
               <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href={link.href} onClick={(e) => handleHashClick(e, link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -59,7 +74,7 @@ export function Footer() {
                       {link.label}
                     </Link> :
 
-                <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href={link.href} onClick={(e) => handleHashClick(e, link.href)} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                       {link.label}
                     </a>
                 }
