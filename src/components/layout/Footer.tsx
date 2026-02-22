@@ -4,15 +4,8 @@ import { personalData } from "@/data/personal";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border overflow-hidden">
-      {/* Large background name */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="font-heading text-[12rem] sm:text-[16rem] lg:text-[20rem] font-bold text-foreground/[0.03] leading-none whitespace-nowrap">
-          Nouman Ejaz
-        </span>
-      </div>
-
-      <div className="container mx-auto px-6 py-16 relative">
+    <footer className="border-t border-border overflow-hidden">
+      <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* CTA / Engage */}
           <div className="md:col-span-5">
@@ -106,6 +99,13 @@ export function Footer() {
             Designed & built with passion
           </p>
         </div>
+      </div>
+
+      {/* Large name at the bottom, below all content */}
+      <div className="pointer-events-none select-none overflow-hidden px-4 sm:px-8 lg:px-12">
+        <span className="block font-heading text-[4rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[18rem] font-bold text-foreground/[0.04] leading-none whitespace-nowrap">
+          Nouman Ejaz
+        </span>
       </div>
     </footer>
   );
