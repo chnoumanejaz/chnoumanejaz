@@ -95,10 +95,8 @@ export function Footer() {
 
       {/* Large name at the bottom with fade/blend effect */}
       <div className="pointer-events-none select-none overflow-hidden px-6 sm:px-10 lg:px-16 -mb-4">
-        <div
-          className="bg-gradient-to-b from-foreground/[0.06] to-transparent bg-clip-text"
-        >
-          <span className="block font-heading font-bold text-transparent leading-[0.85] whitespace-nowrap text-[min(18vw,18rem)]">
+        <div className="bg-gradient-to-b from-foreground/[0.06] to-transparent bg-clip-text w-full">
+          <span className="block font-heading font-bold text-transparent leading-[0.85] whitespace-nowrap" style={{ fontSize: 'clamp(3rem, 15vw, 18rem)' }}>
             <span className="sm:hidden">Nouman</span>
             <span className="hidden sm:inline">Nouman Ejaz</span>
           </span>
