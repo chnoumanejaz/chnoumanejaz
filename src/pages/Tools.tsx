@@ -31,7 +31,7 @@ export default function Tools() {
         }}
       />
       <Navbar />
-      <main className="container mx-auto px-6 pt-28 pb-20">
+      <main className="container mx-auto px-4 sm:px-6 pt-28 pb-20">
         <div className="mb-8">
           <Button variant="ghost" size="sm" className="gap-2 mb-6" asChild>
             <Link to="/">

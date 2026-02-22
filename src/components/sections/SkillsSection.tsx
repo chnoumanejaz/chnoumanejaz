@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export function SkillsSection() {
   return (
     <ParallaxSection speed={0.08} id="skills">
-      <section className="pt-20 pb-10 mx-[24px]">
+      <section className="pt-20 pb-10">
         <ScrollAnimation>
           <SectionHeading
             title="Skills & Technologies"

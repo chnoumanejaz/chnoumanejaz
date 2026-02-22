@@ -123,7 +123,7 @@ export function ProjectsSection() {
   return (
     <ParallaxSection speed={0.06} id="projects">
       <section className="py-20">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <ScrollAnimation>
             <SectionHeading
               title="Featured Projects"
