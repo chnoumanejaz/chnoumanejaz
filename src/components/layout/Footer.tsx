@@ -91,21 +91,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {personalData.name}. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Designed & built with passion
-          </p>
-        </div>
       </div>
 
-      {/* Large name at the bottom, below all content */}
-      <div className="pointer-events-none select-none overflow-hidden px-4 sm:px-8 lg:px-12">
-        <span className="block font-heading text-[4rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[18rem] font-bold text-foreground/[0.04] leading-none whitespace-nowrap">
-          Nouman Ejaz
-        </span>
+      {/* Large name at the bottom with fade/blend effect */}
+      <div className="pointer-events-none select-none overflow-hidden px-6 sm:px-10 lg:px-16 -mb-4">
+        <div
+          className="bg-gradient-to-b from-foreground/[0.06] to-transparent bg-clip-text"
+        >
+          <span className="block font-heading text-[4rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[18rem] font-bold text-transparent leading-[0.85] whitespace-nowrap">
+            Nouman Ejaz
+          </span>
+        </div>
       </div>
     </footer>
   );
