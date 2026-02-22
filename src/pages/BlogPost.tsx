@@ -38,7 +38,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="container mx-auto px-6 pt-28 pb-20">
+      <main className="container mx-auto px-6 pt-28 pb-20 max-w-5xl">
         {/* Back link */}
         <Link
           to="/"
@@ -87,12 +87,12 @@ export default function BlogPost() {
                   h2: ({ children, ...props }) => {
                     const text = String(children);
                     const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
-                    return <h2 id={id} {...props}>{children}</h2>;
+                    return <h2 id={id} className="scroll-mt-24" {...props}>{children}</h2>;
                   },
                   h3: ({ children, ...props }) => {
                     const text = String(children);
                     const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
-                    return <h3 id={id} {...props}>{children}</h3>;
+                    return <h3 id={id} className="scroll-mt-24" {...props}>{children}</h3>;
                   },
                   code({ className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className || "");

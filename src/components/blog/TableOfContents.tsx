@@ -64,7 +64,16 @@ export function TableOfContents({ content }: TableOfContentsProps) {
         <li key={heading.id}>
           <a
             href={`#${heading.id}`}
-            onClick={() => setMobileOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setMobileOpen(false);
+              setActiveId(heading.id);
+              const el = document.getElementById(heading.id);
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY - 96;
+                window.scrollTo({ top, behavior: "smooth" });
+              }
+            }}
             className={cn(
               "block text-sm py-1 transition-colors border-l-2",
               heading.level === 3 ? "pl-6" : "pl-3",
