@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { Send, Mail, MapPin, Phone, User, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -60,21 +60,27 @@ export function ContactSection() {
           {/* Form */}
           <ScrollAnimation animation="fade-up" delay={200}>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                className="rounded-xl bg-card border-border"
-              />
-              <Input
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                className="rounded-xl bg-card border-border"
-              />
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="rounded-xl bg-card border-border pl-10"
+                />
+              </div>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="rounded-xl bg-card border-border pl-10"
+                />
+              </div>
               <div className="relative">
                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -85,14 +91,17 @@ export function ContactSection() {
                   className="rounded-xl bg-card border-border pl-10"
                 />
               </div>
-              <Textarea
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-                rows={5}
-                className="rounded-xl bg-card border-border resize-none"
-              />
+              <div className="relative">
+                <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Textarea
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  rows={5}
+                  className="rounded-xl bg-card border-border resize-none pl-10"
+                />
+              </div>
               <Button type="submit" className="w-full rounded-xl gap-2">
                 <Send className="h-4 w-4" /> Send Message
               </Button>
