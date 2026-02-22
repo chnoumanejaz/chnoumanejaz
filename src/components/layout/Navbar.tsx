@@ -50,8 +50,8 @@ export function Navbar() {
             "flex items-center transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
             "backdrop-blur-xl border shadow-lg shadow-black/5 dark:shadow-black/20",
             scrolled
-              ? "gap-2 px-5 py-2.5 rounded-full bg-background/30 border-white/[0.12] backdrop-saturate-150"
-              : "gap-6 px-6 sm:px-10 lg:px-16 py-4 rounded-none bg-background/20 border-white/[0.08] border-b backdrop-saturate-150"
+              ? "gap-2 px-5 py-2.5 rounded-full bg-background/60 border-white/[0.08]"
+              : "gap-6 px-6 sm:px-10 lg:px-16 py-4 rounded-none bg-background/40 border-white/[0.05] border-b"
           )}
         >
           {/* Logo - slides inward */}
