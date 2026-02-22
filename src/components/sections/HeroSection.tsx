@@ -88,7 +88,7 @@ export function HeroSidebar() {
 export function HeroSection() {
   const { displayed, done } = useTypingAnimation(personalData.role, 100, 800);
   return (
-    <section id="about" className="min-h-screen flex items-start pt-28 pb-16 mx-[24px]">
+    <section id="about" className="min-h-screen flex items-center pt-20 pb-16 mx-[24px]">
       <div className="w-full">
         {/* Left sidebar - visible only on mobile */}
         <ScrollAnimation animation="slide-in-left" className="lg:hidden mb-10">
