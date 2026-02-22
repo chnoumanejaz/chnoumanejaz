@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
 import { Github, Linkedin, Twitter, Mail, Download, Mouse } from "lucide-react";
 import { motion } from "framer-motion";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
-import { useInView } from "react-intersection-observer";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -87,33 +84,6 @@ export function HeroSidebar() {
   );
 }
 
-function BioWithHighlights() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      const timer = setTimeout(() => setShow(true), 400);
-      return () => clearTimeout(timer);
-    }
-  }, [inView]);
-
-  return (
-    <p ref={ref} className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-      I'm a passionate software engineer with{" "}
-      <RoughNotationGroup show={show}>
-        <RoughNotation type="highlight" color="hsl(var(--primary) / 0.2)" order={1} animationDuration={1200}>
-          <span className="text-foreground font-medium">5+ years of experience</span>
-        </RoughNotation>{" "}
-        crafting performant, accessible, and beautiful web applications.{" "}
-        <RoughNotation type="highlight" color="hsl(var(--primary) / 0.2)" order={2} animationDuration={1200}>
-          <span className="text-foreground font-medium">I love turning ideas into reality</span>
-        </RoughNotation>
-      </RoughNotationGroup>{" "}
-      through clean code and thoughtful design.
-    </p>
-  );
-}
 
 export function HeroSection() {
   const { displayed, done } = useTypingAnimation(personalData.role, 100, 800);
@@ -146,7 +116,13 @@ export function HeroSection() {
           </ScrollAnimation>
 
           <ScrollAnimation animation="fade-up" delay={200}>
-            <BioWithHighlights />
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              I'm a passionate software engineer with{" "}
+              <span className="text-primary font-semibold">5+ years of experience</span>{" "}
+              crafting performant, accessible, and beautiful web applications.{" "}
+              <span className="text-primary font-semibold">I love turning ideas into reality</span>{" "}
+              through clean code and thoughtful design.
+            </p>
           </ScrollAnimation>
 
           <motion.div
