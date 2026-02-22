@@ -8,6 +8,7 @@ import { ghcolors } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getBlogPost, blogPosts } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
 import { TableOfContents } from "@/components/blog/TableOfContents";
+import { SEO } from "@/components/SEO";
 import { HeartButton } from "@/components/blog/HeartButton";
 import { CodeCopyButton } from "@/components/blog/CodeCopyButton";
 import { Navbar } from "@/components/layout/Navbar";
@@ -36,6 +37,28 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/blog/${post.slug}`}
+        type="article"
+        article={{
+          publishedTime: post.date,
+          tags: post.tags,
+        }}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          author: {
+            "@type": "Person",
+            name: "Nouman Ejaz",
+          },
+          keywords: post.tags.join(", "),
+        }}
+      />
       <Navbar />
 
       <main className="container mx-auto px-6 pt-28 pb-20 max-w-5xl">

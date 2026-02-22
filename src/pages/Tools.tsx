@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SEO } from "@/components/SEO";
 
 const iconMap: Record<string, React.ElementType> = {
   Braces,
@@ -17,6 +18,18 @@ const iconMap: Record<string, React.ElementType> = {
 export default function Tools() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Developer Tools"
+        description="A collection of useful developer tools built by Nouman Ejaz to solve common problems."
+        canonical="/tools"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Developer Tools by Nouman Ejaz",
+          description: "A collection of useful developer tools to solve common problems.",
+          author: { "@type": "Person", name: "Nouman Ejaz" },
+        }}
+      />
       <Navbar />
       <main className="container mx-auto px-6 pt-28 pb-20">
         <div className="mb-8">
