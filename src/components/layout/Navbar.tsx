@@ -40,13 +40,13 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
+    <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
-        scrolled ? "top-4 left-1/2 right-auto -translate-x-1/2 w-auto max-w-3xl" : "w-full"
+        "fixed z-50 transition-all duration-500 ease-out",
+        scrolled
+          ? "top-4 left-1/2 -translate-x-1/2 w-auto max-w-3xl"
+          : "top-0 left-0 right-0 w-full"
       )}
-      layout
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       <nav
         className={cn(
@@ -133,6 +133,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </motion.header>
+    </header>
   );
 }
