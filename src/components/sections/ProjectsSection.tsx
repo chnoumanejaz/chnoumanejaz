@@ -23,10 +23,18 @@ export function ProjectsSection() {
               <StaggerItem key={project.id}>
                 <motion.div
                   className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500"
-                  whileHover={{ y: -6, boxShadow: "0 20px 40px -15px hsl(152 60% 50% / 0.12)" }}
+                  whileHover={{ y: -6, boxShadow: "0 20px 40px -15px hsl(var(--primary) / 0.12)" }}
                 >
-                  <div className="p-6 pb-0">
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                  {/* Cover image area */}
+                  <div className={`relative h-40 bg-gradient-to-br ${project.coverGradient} overflow-hidden`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                      <span className="font-heading text-6xl font-bold text-foreground">{project.title.charAt(0)}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 -mt-8 relative">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.badges.map((badge) => (
                         <Badge key={badge} className="text-[10px] uppercase tracking-wider font-semibold border-0">
                           {badge}
@@ -39,10 +47,8 @@ export function ProjectsSection() {
                     <p className="text-muted-foreground text-sm leading-relaxed mt-2">
                       {project.description}
                     </p>
-                  </div>
 
-                  <div className="p-6 pt-4">
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mt-4 mb-4">
                       {project.technologies.map((tech) => (
                         <span key={tech} className="text-xs px-2.5 py-1 rounded-md bg-secondary text-muted-foreground">
                           {tech}

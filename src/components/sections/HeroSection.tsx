@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail, Download, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Download, Mouse } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,70 @@ function StatCounter({ value, label, index }: { value: string; label: string; in
   );
 }
 
+export function HeroSidebar() {
+  return (
+    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg">
+      <div className="relative w-28 h-28 mx-auto mb-5">
+        <motion.div
+          className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
+          whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))" }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <span className="font-heading text-3xl font-bold text-primary">NE</span>
+        </motion.div>
+        {personalData.available && (
+          <div className="absolute -bottom-1 -right-1 animate-pulse-glow rounded-full">
+            <Badge className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 border-0">
+              Available
+            </Badge>
+          </div>
+        )}
+      </div>
+
+      <div className="text-center mb-6">
+        <h2 className="font-heading text-xl font-bold">{personalData.name}</h2>
+        <p className="text-sm text-muted-foreground mt-1">{personalData.role}</p>
+        <p className="text-xs text-muted-foreground mt-1">{personalData.location}</p>
+      </div>
+
+      <div className="flex items-center justify-center gap-2 mb-6">
+        {[
+          { icon: Github, href: personalData.social.github },
+          { icon: Linkedin, href: personalData.social.linkedin },
+          { icon: Twitter, href: personalData.social.twitter },
+          { icon: Mail, href: personalData.social.email },
+        ].map(({ icon: Icon, href }, i) => (
+          <motion.a
+            key={i}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+            whileHover={{ scale: 1.15, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 + i * 0.1 }}
+          >
+            <Icon className="h-4 w-4" />
+          </motion.a>
+        ))}
+      </div>
+
+      <div className="flex flex-col gap-2.5">
+        <Button className="w-full gap-2 rounded-xl" asChild>
+          <a href={personalData.resumeUrl}>
+            <Download className="h-4 w-4" /> Download CV
+          </a>
+        </Button>
+        <Button variant="outline" className="w-full rounded-xl" asChild>
+          <a href="#contact">Contact Me</a>
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 export function HeroSection() {
   const { displayed, done } = useTypingAnimation(personalData.role, 100, 800);
 
@@ -27,71 +91,13 @@ export function HeroSection() {
     <section id="about" className="min-h-screen flex items-center pt-20 pb-16">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left sidebar card */}
-          <ScrollAnimation animation="slide-in-left" className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg">
-              <div className="relative w-28 h-28 mx-auto mb-5">
-                <motion.div
-                  className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
-                  whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))" }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="font-heading text-3xl font-bold text-primary">AJ</span>
-                </motion.div>
-                {personalData.available && (
-                  <div className="absolute -bottom-1 -right-1 animate-pulse-glow rounded-full">
-                    <Badge className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 border-0">
-                      Available
-                    </Badge>
-                  </div>
-                )}
-              </div>
-
-              <div className="text-center mb-6">
-                <h2 className="font-heading text-xl font-bold">{personalData.name}</h2>
-                <p className="text-sm text-muted-foreground mt-1">{personalData.role}</p>
-                <p className="text-xs text-muted-foreground mt-1">{personalData.location}</p>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 mb-6">
-                {[
-                  { icon: Github, href: personalData.social.github },
-                  { icon: Linkedin, href: personalData.social.linkedin },
-                  { icon: Twitter, href: personalData.social.twitter },
-                  { icon: Mail, href: personalData.social.email },
-                ].map(({ icon: Icon, href }, i) => (
-                  <motion.a
-                    key={i}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                    whileHover={{ scale: 1.15, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </motion.a>
-                ))}
-              </div>
-
-              <div className="flex flex-col gap-2.5">
-                <Button className="w-full gap-2 rounded-xl" asChild>
-                  <a href={personalData.resumeUrl}>
-                    <Download className="h-4 w-4" /> Download CV
-                  </a>
-                </Button>
-                <Button variant="outline" className="w-full rounded-xl" asChild>
-                  <a href="#contact">Contact Me</a>
-                </Button>
-              </div>
-            </div>
+          {/* Left sidebar - visible only on mobile, desktop uses sticky version in Index */}
+          <ScrollAnimation animation="slide-in-left" className="lg:hidden">
+            <HeroSidebar />
           </ScrollAnimation>
 
           {/* Right content */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 lg:col-start-5">
             <ScrollAnimation animation="fade-up">
               <p className="text-primary font-medium mb-3">Hello, I'm</p>
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
@@ -137,8 +143,7 @@ export function HeroSection() {
                 href="#experience"
                 className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
               >
-                <span className="text-sm">Scroll down</span>
-                <ArrowDown className="h-4 w-4 animate-float" />
+                <Mouse className="h-8 w-8 animate-float" />
               </a>
             </motion.div>
           </div>

@@ -7,6 +7,7 @@ export interface Project {
   githubUrl: string;
   liveUrl: string;
   imageUrl: string;
+  coverGradient: string;
 }
 
 export const projectsData: Project[] = [
@@ -20,6 +21,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     imageUrl: "/placeholder.svg",
+    coverGradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
   },
   {
     id: "2",
@@ -31,6 +33,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     imageUrl: "/placeholder.svg",
+    coverGradient: "from-purple-500/20 via-pink-500/10 to-transparent",
   },
   {
     id: "3",
@@ -42,6 +45,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     imageUrl: "/placeholder.svg",
+    coverGradient: "from-emerald-500/20 via-green-500/10 to-transparent",
   },
   {
     id: "4",
@@ -53,5 +57,6 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
     imageUrl: "/placeholder.svg",
+    coverGradient: "from-amber-500/20 via-orange-500/10 to-transparent",
   },
 ];

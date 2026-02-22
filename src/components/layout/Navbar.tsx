@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { AccentSwitcher } from "@/components/AccentSwitcher";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
@@ -33,8 +34,8 @@ export function Navbar() {
       )}
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-heading text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
-          AJ<span className="text-primary">.</span>
+        <a href="#" className="font-heading text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
+          NE<span className="text-primary">.</span>
         </a>
 
         {/* Desktop nav */}
@@ -49,13 +50,15 @@ export function Navbar() {
               <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </a>
           ))}
-          <div className="ml-3">
+          <div className="ml-3 flex items-center gap-1">
+            <AccentSwitcher />
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile nav */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-1">
+          <AccentSwitcher />
           <ThemeToggle />
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

@@ -33,7 +33,15 @@ export function ExperienceSection() {
                         </div>
                         <span className="text-sm text-muted-foreground whitespace-nowrap">{exp.period}</span>
                       </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{exp.description}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{exp.description}</p>
+                      <ul className="space-y-1.5 mb-4">
+                        {exp.highlights.map((point, i) => (
+                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <span className="text-primary mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
                       <div className="flex flex-wrap gap-1.5">
                         {exp.technologies.map((tech) => (
                           <Badge key={tech} variant="secondary" className="text-xs font-normal">
