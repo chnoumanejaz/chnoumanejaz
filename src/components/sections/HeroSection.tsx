@@ -22,7 +22,7 @@ function StatCounter({ value, label, index }: {value: string;label: string;index
 
 export function HeroSidebar() {
   return (
-    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg my-[109px] py-[32px] ">
+    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg py-[32px]">
       <div className="relative w-28 h-28 mx-auto mb-5">
         <motion.div
           className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
@@ -88,7 +88,7 @@ export function HeroSidebar() {
 export function HeroSection() {
   const { displayed, done } = useTypingAnimation(personalData.role, 100, 800);
   return (
-    <section id="about" className="min-h-screen flex items-center pt-20 pb-16 mx-[24px]">
+    <section id="about" className="min-h-screen flex items-start pt-28 pb-16 mx-[24px]">
       <div className="w-full">
         {/* Left sidebar - visible only on mobile */}
         <ScrollAnimation animation="slide-in-left" className="lg:hidden mb-10">
