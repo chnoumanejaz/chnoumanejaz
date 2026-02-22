@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { HeroSection, HeroSidebar } from "@/components/sections/HeroSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -12,6 +13,7 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgress />
       <Navbar />
       <main>
         <div className="container mx-auto px-6">
