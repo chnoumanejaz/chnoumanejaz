@@ -5,10 +5,23 @@ import { blogPosts } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SEO } from "@/components/SEO";
 
 const BlogListing = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Blog"
+        description="Thoughts on software development, design, and technology by Nouman Ejaz."
+        canonical="/blog"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Nouman Ejaz's Blog",
+          description: "Thoughts on software development, design, and technology.",
+          author: { "@type": "Person", name: "Nouman Ejaz" },
+        }}
+      />
       <Navbar />
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-6">

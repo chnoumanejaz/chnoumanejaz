@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -40,6 +41,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        canonical="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Nouman Ejaz",
+          jobTitle: "Software Engineer",
+          url: "https://noumanejaz.com",
+          sameAs: [
+            "https://github.com",
+            "https://linkedin.com",
+            "https://twitter.com",
+          ],
+        }}
+      />
       <ScrollProgress />
       <Navbar />
       <main>
