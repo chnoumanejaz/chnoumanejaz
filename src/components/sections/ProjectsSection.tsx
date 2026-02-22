@@ -121,8 +121,8 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <ParallaxSection speed={0.06}>
-      <section id="projects" className="py-20">
+    <ParallaxSection speed={0.06} id="projects">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <ScrollAnimation>
             <SectionHeading
