@@ -34,7 +34,11 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Sticky sidebar - desktop only */}
-            <div className="hidden lg:block lg:col-span-4 self-start sticky top-24">
+            <div
+              className={`hidden lg:flex lg:col-span-4 self-start sticky items-center w-full transition-all duration-500 ${
+                pastHero ? "top-24 min-h-0 pt-0 pb-0" : "top-0 min-h-screen pt-20 pb-16"
+              }`}
+            >
               <div className="w-full">
                 <ScrollAnimation animation="slide-in-left">
                   <HeroSidebar />
