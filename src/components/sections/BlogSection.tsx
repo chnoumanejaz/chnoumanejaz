@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { blogPosts } from "@/data/blogPosts";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/shared/ScrollAnimation";
 
@@ -28,7 +29,7 @@ export function BlogSection() {
               >
                 <motion.div
                   className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-500 h-full flex flex-col"
-                  whileHover={{ y: -4, boxShadow: "0 15px 30px -10px hsl(152 60% 50% / 0.1)" }}
+                  whileHover={{ y: -4, boxShadow: "0 15px 30px -10px hsl(var(--primary) / 0.1)" }}
                 >
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {post.tags.map((tag) => (
@@ -64,6 +65,14 @@ export function BlogSection() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        <div className="flex justify-center mt-10">
+          <Button variant="outline" className="rounded-xl gap-2" asChild>
+            <Link to="/blog">
+              View All Posts <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

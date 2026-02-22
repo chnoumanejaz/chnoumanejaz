@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, MapPin } from "lucide-react";
+import { Send, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,12 +9,12 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { toast } from "sonner";
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
@@ -75,6 +75,16 @@ export function ContactSection() {
                 required
                 className="rounded-xl bg-card border-border"
               />
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="tel"
+                  placeholder="Your Phone Number"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="rounded-xl bg-card border-border pl-10"
+                />
+              </div>
               <Textarea
                 placeholder="Your Message"
                 value={formData.message}

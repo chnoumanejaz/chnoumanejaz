@@ -28,8 +28,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <a href="#" className="font-heading text-2xl font-bold tracking-tight">
-              AJ<span className="text-primary">.</span>
+            <a href="#" className="font-heading text-3xl font-bold tracking-tight">
+              NE<span className="text-primary">.</span>
             </a>
             <p className="mt-3 text-muted-foreground max-w-sm leading-relaxed">
               Software engineer passionate about building beautiful, performant web experiences. Let's create something amazing together.

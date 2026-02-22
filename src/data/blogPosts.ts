@@ -297,6 +297,90 @@ class AuthService {
 Design patterns are tools, not rules. Use them when they solve a real problem in your codebase. TypeScript's type system makes these patterns safer and more expressive than ever.
 `,
   },
+  {
+    slug: "api-design-best-practices",
+    title: "API Design Best Practices for Modern Apps",
+    date: "2024-10-22",
+    excerpt:
+      "A guide to designing clean, consistent, and developer-friendly REST APIs that scale with your application.",
+    tags: ["Backend", "API"],
+    readTime: "7 min read",
+    content: `
+## Introduction
+
+A well-designed API is the backbone of any modern application. It determines how easily other developers can integrate with your system and how maintainable your codebase will be over time.
+
+## Consistent Naming Conventions
+
+Use plural nouns for resources and keep URLs predictable:
+
+\`\`\`
+GET    /api/users         # List users
+POST   /api/users         # Create user
+GET    /api/users/:id     # Get user
+PUT    /api/users/:id     # Update user
+DELETE /api/users/:id     # Delete user
+\`\`\`
+
+## Error Handling
+
+Return consistent error responses with helpful messages:
+
+\`\`\`json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Email is required",
+    "details": [
+      { "field": "email", "message": "This field is required" }
+    ]
+  }
+}
+\`\`\`
+
+## Conclusion
+
+Good API design is an investment that pays dividends in developer experience, maintainability, and system reliability.
+`,
+  },
+  {
+    slug: "developer-productivity-tools",
+    title: "10 Tools That Boosted My Developer Productivity",
+    date: "2024-09-15",
+    excerpt:
+      "My curated list of development tools, extensions, and workflows that have significantly improved my daily coding efficiency.",
+    tags: ["Productivity", "Tools"],
+    readTime: "5 min read",
+    content: `
+## Introduction
+
+Over the years, I've refined my development setup to maximize productivity. Here are the tools that made the biggest difference.
+
+## Code Editor Setup
+
+The right editor configuration can save hours per week:
+
+- **VS Code** with carefully chosen extensions
+- **Vim keybindings** for faster text navigation
+- **Custom snippets** for repetitive patterns
+
+## Terminal Tools
+
+A powerful terminal setup is essential:
+
+\`\`\`bash
+# My must-have CLI tools
+brew install ripgrep    # Fast search
+brew install fd         # Better find
+brew install bat        # Better cat
+brew install exa        # Better ls
+\`\`\`
+
+## Conclusion
+
+The best productivity tool is the one that removes friction from your workflow. Experiment, iterate, and find what works for you.
+`,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
