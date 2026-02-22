@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Palette } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,21 +12,13 @@ const accentColors = [
 
 function applyAccent(color: typeof accentColors[0]) {
   const root = document.documentElement;
-  root.style.setProperty("--primary", color.light);
-  root.style.setProperty("--accent", color.light);
-  root.style.setProperty("--ring", color.light);
-  root.style.setProperty("--sidebar-primary", color.light);
-  root.style.setProperty("--sidebar-ring", color.light);
-
-  // Also set dark mode values via a class observer
   const isDark = root.classList.contains("dark");
-  if (isDark) {
-    root.style.setProperty("--primary", color.dark);
-    root.style.setProperty("--accent", color.dark);
-    root.style.setProperty("--ring", color.dark);
-    root.style.setProperty("--sidebar-primary", color.dark);
-    root.style.setProperty("--sidebar-ring", color.dark);
-  }
+  const value = isDark ? color.dark : color.light;
+  root.style.setProperty("--primary", value);
+  root.style.setProperty("--accent", value);
+  root.style.setProperty("--ring", value);
+  root.style.setProperty("--sidebar-primary", value);
+  root.style.setProperty("--sidebar-ring", value);
 }
 
 export function AccentSwitcher() {
@@ -35,6 +27,16 @@ export function AccentSwitcher() {
     return localStorage.getItem("accent-color") || "Emerald";
   });
   const ref = useRef<HTMLDivElement>(null);
+
+  const currentIndex = accentColors.findIndex((c) => c.name === selected);
+
+  const cycleColor = useCallback(() => {
+    const nextIndex = (currentIndex + 1) % accentColors.length;
+    setSelected(accentColors[nextIndex].name);
+    setOpen(true);
+    // Auto-close the preview after a moment
+    setTimeout(() => setOpen(false), 1200);
+  }, [currentIndex]);
 
   useEffect(() => {
     const color = accentColors.find((c) => c.name === selected) || accentColors[0];
@@ -61,40 +63,71 @@ export function AccentSwitcher() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const currentColor = accentColors[currentIndex] || accentColors[0];
+
   return (
     <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        onMouseEnter={() => setOpen(true)}
-        className="p-2 rounded-full hover:bg-secondary transition-colors"
-        aria-label="Change accent color"
+      <motion.button
+        onClick={cycleColor}
+        className="relative p-2 rounded-full hover:bg-secondary transition-colors"
+        aria-label="Cycle accent color"
+        whileTap={{ scale: 0.85, rotate: 90 }}
+        transition={{ type: "spring", stiffness: 400, damping: 15 }}
       >
         <Palette className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
-      </button>
+        {/* Active color dot */}
+        <motion.span
+          className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-background"
+          style={{ backgroundColor: currentColor.preview }}
+          key={currentColor.name}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 500, damping: 20 }}
+        />
+      </motion.button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -4, scale: 0.95 }}
+            initial={{ opacity: 0, y: 8, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full right-0 mt-2 p-2 bg-card border border-border rounded-xl shadow-lg flex gap-2 z-50"
+            exit={{ opacity: 0, y: 8, scale: 0.8 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="absolute top-full right-0 mt-2 px-3 py-2 bg-card/95 backdrop-blur-xl border border-border rounded-full shadow-xl z-50"
           >
-            {accentColors.map((color) => (
-              <button
-                key={color.name}
-                onClick={() => {
-                  setSelected(color.name);
-                  setOpen(false);
-                }}
-                className={`w-7 h-7 rounded-full transition-all duration-200 hover:scale-110 ${
-                  selected === color.name ? "ring-2 ring-foreground ring-offset-2 ring-offset-background scale-110" : ""
-                }`}
-                style={{ backgroundColor: color.preview }}
-                title={color.name}
-              />
-            ))}
+            <div className="flex items-center gap-1.5">
+              {accentColors.map((color, i) => {
+                const isSelected = selected === color.name;
+                return (
+                  <motion.button
+                    key={color.name}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelected(color.name);
+                    }}
+                    className="relative rounded-full transition-all"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: i * 0.04, type: "spring", stiffness: 500, damping: 25 }}
+                    whileHover={{ scale: 1.25 }}
+                    whileTap={{ scale: 0.9 }}
+                    title={color.name}
+                  >
+                    <span
+                      className="block w-6 h-6 rounded-full"
+                      style={{ backgroundColor: color.preview }}
+                    />
+                    {isSelected && (
+                      <motion.span
+                        className="absolute inset-0 rounded-full border-2 border-foreground"
+                        layoutId="accent-ring"
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

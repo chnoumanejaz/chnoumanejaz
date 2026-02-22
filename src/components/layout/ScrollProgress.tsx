@@ -6,8 +6,13 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-[60]"
-      style={{ scaleX }}
+      className="fixed top-0 left-0 right-0 h-[3px] origin-left z-[60]"
+      style={{
+        scaleX,
+        background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
+        backgroundSize: "200% 100%",
+        animation: "gradient-shift 3s ease infinite",
+      }}
     />
   );
 }
