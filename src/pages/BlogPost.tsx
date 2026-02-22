@@ -41,8 +41,8 @@ export default function BlogPost() {
           <ArrowLeft className="h-4 w-4" /> Back to Home
         </Link>
 
-        {/* Post header */}
-        <header className="mb-10 max-w-3xl">
+        {/* Post header - full width */}
+        <header className="mb-10">
           <div className="flex flex-wrap gap-1.5 mb-4">
             {post.tags.map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">
@@ -69,7 +69,7 @@ export default function BlogPost() {
           </div>
         </header>
 
-        {/* Content + TOC layout */}
+        {/* Content + TOC layout - TOC on left, sticky */}
         <div className="flex gap-12">
           <TableOfContents content={post.content} />
 
@@ -80,18 +80,12 @@ export default function BlogPost() {
                 components={{
                   h2: ({ children, ...props }) => {
                     const text = String(children);
-                    const id = text
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, "")
-                      .replace(/\s+/g, "-");
+                    const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
                     return <h2 id={id} {...props}>{children}</h2>;
                   },
                   h3: ({ children, ...props }) => {
                     const text = String(children);
-                    const id = text
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, "")
-                      .replace(/\s+/g, "-");
+                    const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
                     return <h3 id={id} {...props}>{children}</h3>;
                   },
                 }}

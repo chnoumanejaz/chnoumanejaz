@@ -20,19 +20,19 @@ export function SkillsSection() {
             {skillsData.map((category) => (
               <StaggerItem key={category.name}>
                 <div className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500 h-full">
-                  <h3 className="font-heading font-semibold text-sm text-primary mb-4 uppercase tracking-wider">
+                  <h3 className="font-heading font-semibold text-sm text-primary mb-5 uppercase tracking-wider">
                     {category.name}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-col gap-2.5">
                     {category.skills.map((skill) => (
-                      <motion.span
+                      <motion.div
                         key={skill}
-                        className="px-3 py-1.5 text-sm rounded-lg bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default"
-                        whileHover={{ scale: 1.08, y: -2 }}
+                        className="px-4 py-2.5 text-sm rounded-xl bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default w-fit"
+                        whileHover={{ scale: 1.05, x: 4 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         {skill}
-                      </motion.span>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
