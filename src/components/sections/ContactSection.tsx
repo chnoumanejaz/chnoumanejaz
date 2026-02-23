@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, MapPin, Phone, User, MessageSquare, CheckCircle } from "lucide-react";
+import { Send, Mail, MapPin, Phone, User, MessageSquare, CheckCircle, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,6 +54,17 @@ export function ContactSection() {
               <p className="text-muted-foreground leading-relaxed">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out!
               </p>
+              
+              <div className="pt-4">
+                <Button className="w-full gap-2 rounded-xl" asChild>
+                  <a href={personalData.calendarUrl} target="_blank" rel="noopener noreferrer">
+                    <Calendar className="h-4 w-4" /> Book a Call
+                  </a>
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-2">
+                  Or send me a message using the form →
+                </p>
+              </div>
             </div>
           </ScrollAnimation>
 

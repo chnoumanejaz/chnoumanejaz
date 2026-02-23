@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail, Download, Mouse } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Download, Mouse, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
@@ -78,6 +78,11 @@ export function HeroSidebar() {
         </Button>
         <Button variant="outline" className="w-full rounded-xl" asChild>
           <a href="#contact">Contact Me</a>
+        </Button>
+        <Button variant="secondary" className="w-full gap-2 rounded-xl" asChild>
+          <a href={personalData.calendarUrl} target="_blank" rel="noopener noreferrer">
+            <Calendar className="h-4 w-4" /> Book a Call
+          </a>
         </Button>
       </div>
     </div>);

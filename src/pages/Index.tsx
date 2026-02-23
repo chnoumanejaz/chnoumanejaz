@@ -10,6 +10,7 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ToolsSection } from "@/components/sections/ToolsSection";
 import { BlogSection } from "@/components/sections/BlogSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 
@@ -82,6 +83,7 @@ const Index = () => {
               <SkillsSection />
               <ToolsSection />
               <BlogSection />
+              <TestimonialsSection />
               <ContactSection />
             </div>
           </div>

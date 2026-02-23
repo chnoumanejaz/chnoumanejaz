@@ -8,6 +8,7 @@ export const personalData = {
   available: true,
   avatarUrl: "/placeholder.svg",
   resumeUrl: "#",
+  calendarUrl: "https://calendly.com/yourusername",
   social: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
