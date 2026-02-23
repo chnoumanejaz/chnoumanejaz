@@ -16,15 +16,16 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function ToolsSection() {
   return (
-    <section id="tools" className="pt-10 pb-20">
-      <ScrollAnimation>
-        <SectionHeading
-          title="Tools"
-          subtitle="Useful tools I've built to make developer life easier." />
+    <section id="tools" className="pt-10 pb-20 scroll-mt-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        <ScrollAnimation>
+          <SectionHeading
+            title="Tools"
+            subtitle="Useful tools I've built to make developer life easier." />
 
-      </ScrollAnimation>
+        </ScrollAnimation>
 
-      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
         {toolsData.slice(0, 4).map((tool) => {
           const Icon = iconMap[tool.icon] || Globe;
           return (
@@ -72,7 +73,6 @@ export function ToolsSection() {
             View All Tools <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
-      </div>
-    </section>);
+      </div>      </div>    </section>);
 
 }

@@ -64,7 +64,7 @@ const Index = () => {
             {/* Sticky sidebar - desktop only */}
             <div
               className={`hidden lg:flex lg:col-span-4 self-start sticky items-center w-full transition-all duration-500 ${
-                pastHero ? "top-24 min-h-0 pt-0 pb-0" : "top-0 min-h-screen pt-20 pb-16"
+                pastHero ? "top-24 min-h-0 pt-0 pb-0" : "top-0 min-h-screen pt-[2rem] pb-16"
               }`}
             >
               <div className="w-full">
@@ -79,10 +79,8 @@ const Index = () => {
               <HeroSection />
               <ExperienceSection />
               <ProjectsSection />
-              <div className="space-y-0">
-                <SkillsSection />
-                <ToolsSection />
-              </div>
+              <SkillsSection />
+              <ToolsSection />
               <BlogSection />
               <ContactSection />
             </div>

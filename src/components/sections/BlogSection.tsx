@@ -11,7 +11,7 @@ export function BlogSection() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section id="blog" className="py-20">
+    <section id="blog" className="py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6">
         <ScrollAnimation>
           <SectionHeading

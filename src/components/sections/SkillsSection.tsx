@@ -7,15 +7,16 @@ import { motion } from "framer-motion";
 export function SkillsSection() {
   return (
     <ParallaxSection speed={0.08} id="skills">
-      <section className="pt-20 pb-10">
-        <ScrollAnimation>
-          <SectionHeading
-            title="Skills & Technologies"
-            subtitle="The tools and technologies I use to bring ideas to life." />
+      <section className="pt-20 pb-10 scroll-mt-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <ScrollAnimation>
+            <SectionHeading
+              title="Skills & Technologies"
+              subtitle="The tools and technologies I use to bring ideas to life." />
 
-        </ScrollAnimation>
+          </ScrollAnimation>
 
-        <StaggerContainer className="space-y-10" staggerDelay={0.15}>
+          <StaggerContainer className="space-y-10" staggerDelay={0.15}>
           {skillsData.map((category) =>
           <StaggerItem key={category.name}>
               <div className="group">
@@ -38,6 +39,7 @@ export function SkillsSection() {
             </StaggerItem>
           )}
         </StaggerContainer>
+        </div>
       </section>
     </ParallaxSection>);
 

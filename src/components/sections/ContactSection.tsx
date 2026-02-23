@@ -18,7 +18,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6">
         <ScrollAnimation>
           <SectionHeading

@@ -3,27 +3,38 @@ import { useState, useEffect } from "react";
 const sectionIds = ["about", "experience", "projects", "skills", "tools", "blog", "contact"];
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState<string>("about");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
+    const handleScroll = () => {
+      // Get the current scroll position, offset by navbar height + some buffer
+      const scrollPosition = window.scrollY + 200; // 200px offset for navbar and buffer
+      
+      let currentSection = "about";
+      
+      // Find which section we're currently in
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          // Check if scroll position is within this section
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            currentSection = id;
+            break;
+          }
         }
-      },
-      { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.05, 0.1, 0.2] }
-    );
+      }
+      
+      setActiveSection(currentSection);
+    };
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    // Initial check
+    handleScroll();
+    
+    // Listen to scroll events
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return activeSection;
