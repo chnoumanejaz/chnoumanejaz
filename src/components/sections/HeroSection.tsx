@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail, Download, Mouse, Calendar } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Download, Mouse } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
@@ -24,16 +24,16 @@ export function HeroSidebar() {
   return (
     <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg py-[32px]">
       <div className="relative w-28 h-28 mx-auto mb-5">
-        <motion.div
-          className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
+        <motion.img
+          src={personalData.avatarUrl}
+          alt={personalData.name}
+          className="w-full h-full object-cover rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
           whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))" }}
           transition={{ type: "spring", stiffness: 300 }}>
-
-          <span className="font-heading text-3xl font-bold text-primary">NE</span>
-        </motion.div>
+        </motion.img>
         {personalData.available &&
-        <div className="absolute -bottom-1 -right-1 animate-pulse-glow rounded-full">
-            <Badge className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 border-0">
+        <div className="absolute bottom-0 right-0 z-10">
+            <Badge className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 border-2 border-background shadow-md">
               Available
             </Badge>
           </div>
@@ -71,17 +71,12 @@ export function HeroSidebar() {
       </div>
 
       <div className="flex flex-col gap-2.5">
-        <Button className="w-full gap-2 rounded-xl" asChild>
-          <a href={personalData.resumeUrl}>
-            <Download className="h-4 w-4" /> Download CV
-          </a>
-        </Button>
-        <Button variant="outline" className="w-full rounded-xl" asChild>
+        <Button className="w-full rounded-xl" asChild>
           <a href="#contact">Contact Me</a>
         </Button>
-        <Button variant="secondary" className="w-full gap-2 rounded-xl" asChild>
-          <a href={personalData.calendarUrl} target="_blank" rel="noopener noreferrer">
-            <Calendar className="h-4 w-4" /> Book a Call
+        <Button variant="outline" className="w-full gap-2 rounded-xl" asChild>
+          <a href={personalData.resumeUrl}>
+            <Download className="h-4 w-4" /> Download CV
           </a>
         </Button>
       </div>
@@ -122,16 +117,14 @@ export function HeroSection() {
 
           <ScrollAnimation animation="fade-up" delay={200}>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              I'm a passionate software engineer with{" "}
-              <span className="text-foreground font-semibold">5+ years of experience</span>{" "}
-              crafting performant, accessible, and beautiful web applications.{" "}
-              <span className="text-foreground font-semibold">I love turning ideas into reality</span>{" "}
-              through clean code and thoughtful design.
+              I help businesses transform ideas into high-performance web applications.
+              With{" "}
+              <span className="text-foreground font-semibold">5+ years of hands-on industry experience</span>, I focus on clean architecture, scalability, and delivering software that drives measurable results.
             </p>
           </ScrollAnimation>
 
           <motion.div
-            className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 p-6 bg-card border border-border rounded-2xl"
+            className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 p-6 bg-card/50 border border-border/50 rounded-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}>
