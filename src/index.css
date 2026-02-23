@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+/* Fonts are now loaded via preconnect in index.html for better performance */
 
 @tailwind base;
 @tailwind components;
@@ -107,43 +107,86 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Blog prose styles */
 .prose {
   @apply text-foreground leading-relaxed;
 }
-.prose h1, .prose h2, .prose h3, .prose h4 {
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
   @apply font-heading font-bold text-foreground mt-8 mb-4;
 }
-.prose h1 { @apply text-3xl; }
-.prose h2 { @apply text-2xl; }
-.prose h3 { @apply text-xl; }
-.prose p { @apply mb-4 text-muted-foreground leading-7; }
-.prose a { @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors; }
+
+.prose h1 {
+  @apply text-3xl;
+}
+
+.prose h2 {
+  @apply text-2xl;
+}
+
+.prose h3 {
+  @apply text-xl;
+}
+
+.prose p {
+  @apply mb-4 text-muted-foreground leading-7;
+}
+
+.prose a {
+  @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors;
+}
+
 .prose code {
   @apply bg-secondary text-foreground px-1.5 py-0.5 rounded text-sm font-mono;
 }
+
 .prose pre {
   @apply bg-secondary rounded-lg p-4 overflow-x-auto my-6;
 }
+
 .prose pre code {
   @apply bg-transparent p-0;
 }
-.prose ul, .prose ol {
+
+.prose ul,
+.prose ol {
   @apply mb-4 pl-6 text-muted-foreground;
 }
-.prose ul { @apply list-disc; }
-.prose ol { @apply list-decimal; }
-.prose li { @apply mb-2; }
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
 .prose blockquote {
   @apply border-l-4 border-primary pl-4 italic text-muted-foreground my-4;
 }
+
 .prose img {
   @apply rounded-lg my-6;
 }
+
 .prose hr {
   @apply border-border my-8;
 }

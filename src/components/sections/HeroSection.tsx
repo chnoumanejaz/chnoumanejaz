@@ -27,6 +27,10 @@ export function HeroSidebar() {
         <motion.img
           src={personalData.avatarUrl}
           alt={personalData.name}
+          width="112"
+          height="112"
+          loading="eager"
+          decoding="async"
           className="w-full h-full object-cover rounded-full bg-secondary flex items-center justify-center overflow-hidden border-2 border-primary/20"
           whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))" }}
           transition={{ type: "spring", stiffness: 300 }}>

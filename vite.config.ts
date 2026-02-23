@@ -19,4 +19,25 @@ export default defineConfig(({ mode }) => ({
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "framer-motion"],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'motion-vendor': ['framer-motion'],
+          'ui-vendor': ['lucide-react'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    minify: 'esbuild',
+    target: 'esnext',
+    sourcemap: mode === 'production' ? false : true,
+    // Drop console and debugger in production builds
+    ...(mode === 'production' && {
+      esbuild: {
+        drop: ['console', 'debugger'],
+      },
+    }),
+  },
 }));
