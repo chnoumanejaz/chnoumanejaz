@@ -31,6 +31,11 @@ export function SEO({
 }: SEOProps) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : `${SITE_URL}${image.startsWith("/") ? image : `/${image}`}`
+    : undefined;
 
   return (
     <Helmet>
@@ -44,13 +49,13 @@ export function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={SITE_NAME} />
-      {image && <meta property="og:image" content={image} />}
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
       {/* Article specific */}
       {article?.publishedTime && (
