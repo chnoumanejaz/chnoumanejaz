@@ -9,6 +9,9 @@ import Index from "./pages/Index";
 import BlogPost from "./pages/BlogPost";
 import BlogListing from "./pages/BlogListing";
 import Tools from "./pages/Tools";
+import JsonFormatterPage from "./pages/tools/JsonFormatterPage";
+import ColorPalettePage from "./pages/tools/ColorPalettePage";
+import RegexTesterPage from "./pages/tools/RegexTesterPage";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "./components/ScrollToTop";
 
@@ -27,6 +30,9 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/blog" element={<BlogListing />} />
               <Route path="/tools" element={<Tools />} />
+              <Route path="/tools/json-formatter" element={<JsonFormatterPage />} />
+              <Route path="/tools/color-palette" element={<ColorPalettePage />} />
+              <Route path="/tools/regex-tester" element={<RegexTesterPage />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
