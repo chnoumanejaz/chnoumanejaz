@@ -1,8 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projectsData } from "@/data/projects";
+import { personalData } from "@/data/personal";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/shared/ScrollAnimation";
 import { ParallaxSection } from "@/components/shared/ParallaxSection";
@@ -75,6 +77,28 @@ export function ProjectsSection() {
               );
             })}
           </StaggerContainer>
+
+          <ScrollAnimation>
+            <div className="mt-10 flex justify-center">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="group h-12 rounded-full border-primary/30 bg-background/70 px-5 font-semibold shadow-sm backdrop-blur hover:border-primary/60 hover:bg-primary hover:text-primary-foreground"
+              >
+                <a
+                  href={personalData.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Check more projects on GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                  Check More Projects
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </Button>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
     </ParallaxSection>
