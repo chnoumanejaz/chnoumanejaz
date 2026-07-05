@@ -14,6 +14,11 @@ import { CodeCopyButton } from "@/components/blog/CodeCopyButton";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useTheme } from "next-themes";
+import type { ComponentPropsWithoutRef } from "react";
+
+type MarkdownCodeProps = ComponentPropsWithoutRef<"code"> & {
+  node?: unknown;
+};
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -117,7 +122,7 @@ export default function BlogPost() {
                     const id = text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
                     return <h3 id={id} className="scroll-mt-24" {...props}>{children}</h3>;
                   },
-                  code({ className, children, ...props }: any) {
+                  code({ className, children, node: _node, ...props }: MarkdownCodeProps) {
                     const match = /language-(\w+)/.exec(className || "");
                     const codeString = String(children).replace(/\n$/, "");
                     if (match) {

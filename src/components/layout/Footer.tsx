@@ -1,6 +1,13 @@
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, X as XIcon, Mail, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { personalData } from "@/data/personal";
+
+const socialLinks = [
+  { label: "GitHub", icon: Github, href: personalData.social.github },
+  { label: "LinkedIn", icon: Linkedin, href: personalData.social.linkedin },
+  { label: "X", icon: XIcon, href: personalData.social.x },
+  { label: "Email", icon: Mail, href: personalData.social.email },
+];
 
 export function Footer() {
   const location = useLocation();
@@ -64,7 +71,6 @@ export function Footer() {
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Resources</h4>
             <ul className="space-y-2.5">
               {[
-              { label: "Blog", href: "/blog" },
               { label: "Resume", href: personalData.resumeUrl },
               { label: "Contact", href: "#contact" }].
               map((link) =>
@@ -86,17 +92,13 @@ export function Footer() {
           <div className="md:col-span-2">
             <h4 className="font-heading font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Connect</h4>
             <div className="flex items-center gap-2">
-              {[
-              { icon: Github, href: personalData.social.github },
-              { icon: Linkedin, href: personalData.social.linkedin },
-              { icon: Twitter, href: personalData.social.twitter },
-              { icon: Mail, href: personalData.social.email }].
-              map(({ icon: Icon, href }, i) =>
+              {socialLinks.map(({ label, icon: Icon, href }) =>
               <a
-                key={i}
+                key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                aria-label={label}
                 className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
 
                   <Icon className="h-4 w-4" />

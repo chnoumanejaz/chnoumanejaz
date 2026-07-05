@@ -9,10 +9,10 @@ import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ToolsSection } from "@/components/sections/ToolsSection";
-import { BlogSection } from "@/components/sections/BlogSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
+import { personalData } from "@/data/personal";
 
 const Index = () => {
   const [pastHero, setPastHero] = useState(false);
@@ -51,9 +51,9 @@ const Index = () => {
           jobTitle: "Software Engineer",
           url: "https://noumanejaz.com",
           sameAs: [
-            "https://github.com",
-            "https://linkedin.com",
-            "https://twitter.com",
+            personalData.social.github,
+            personalData.social.linkedin,
+            personalData.social.x,
           ],
         }}
       />
@@ -82,7 +82,6 @@ const Index = () => {
               <ProjectsSection />
               <SkillsSection />
               <ToolsSection />
-              <BlogSection />
               <TestimonialsSection />
               <ContactSection />
             </div>

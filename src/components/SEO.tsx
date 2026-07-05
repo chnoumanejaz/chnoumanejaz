@@ -15,7 +15,7 @@ interface SEOProps {
 
 const SITE_NAME = "Nouman Ejaz";
 const DEFAULT_DESCRIPTION =
-  "Software Engineer building elegant solutions to complex problems. Portfolio, blog, and developer tools.";
+  "Software Engineer building reliable web apps, scalable APIs, dashboards, automation, and developer tools.";
 const SITE_URL = "https://noumanejaz.com";
 
 export function SEO({

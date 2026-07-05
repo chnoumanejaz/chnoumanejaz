@@ -1,10 +1,17 @@
-import { Github, Linkedin, Twitter, Mail, Download, Mouse } from "lucide-react";
+import { Github, Linkedin, X as XIcon, Mail, Download, Mouse } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
+
+const socialLinks = [
+  { label: "GitHub", icon: Github, href: personalData.social.github },
+  { label: "LinkedIn", icon: Linkedin, href: personalData.social.linkedin },
+  { label: "X", icon: XIcon, href: personalData.social.x },
+  { label: "Email", icon: Mail, href: personalData.social.email },
+];
 
 function StatCounter({ value, label, index }: {value: string;label: string;index: number;}) {
   return (
@@ -51,17 +58,13 @@ export function HeroSidebar() {
       </div>
 
       <div className="flex items-center justify-center gap-2 mb-6">
-        {[
-        { icon: Github, href: personalData.social.github },
-        { icon: Linkedin, href: personalData.social.linkedin },
-        { icon: Twitter, href: personalData.social.twitter },
-        { icon: Mail, href: personalData.social.email }].
-        map(({ icon: Icon, href }, i) =>
+        {socialLinks.map(({ label, icon: Icon, href }, i) =>
         <motion.a
-          key={i}
+          key={label}
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={href.startsWith("mailto:") ? undefined : "_blank"}
+          rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          aria-label={label}
           className="p-2.5 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
           whileHover={{ scale: 1.15, y: -2 }}
           whileTap={{ scale: 0.95 }}
@@ -121,9 +124,12 @@ export function HeroSection() {
 
           <ScrollAnimation animation="fade-up" delay={200}>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              I help businesses transform ideas into high-performance web applications.
-              With{" "}
-              <span className="text-foreground font-semibold">5+ years of hands-on industry experience</span>, I focus on clean architecture, scalability, and delivering software that drives measurable results.
+              I help startups turn rough ideas into reliable software: polished web apps,
+              scalable APIs, dashboards, automation, and integrations that move the business
+              forward. With{" "}
+              <span className="text-foreground font-semibold">4+ years of hands-on experience</span>,
+              I bring the product sense and engineering discipline to ship clean, fast systems
+              users can trust.
             </p>
           </ScrollAnimation>
 

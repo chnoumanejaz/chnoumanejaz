@@ -13,7 +13,6 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Tools", href: "#tools" },
-  { label: "Blog", href: "#blog" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -67,7 +66,7 @@ export function Navbar() {
           <a
             href="#"
             className={cn(
-              "font-heading text-lg font-bold tracking-tight text-foreground hover:text-primary transition-all duration-700 flex-shrink-0",
+              "font-heading text-xl sm:text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-all duration-700 flex-shrink-0",
               scrolled ? "mr-2" : "mr-auto"
             )}
           >
