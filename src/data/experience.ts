@@ -1,6 +1,7 @@
 export interface Experience {
   id: string;
   company: string;
+  companyUrl?: string;
   role: string;
   period: string;
   description: string;
@@ -10,45 +11,62 @@ export interface Experience {
 
 export const experienceData: Experience[] = [
   {
-    id: "1",
+    id: "autocall",
+    company: "AutoCall",
+    companyUrl: "https://www.autocall.com.au/",
+    role: "Senior Frontend Engineer",
+    period: "June 2026 — Present",
+    description:
+      "Building an AI-powered contact centre platform across call analytics, AI agents, reporting dashboards, routing workflows, integrations, and role-based admin systems.",
+    highlights: [
+      "Building full-stack features for AI agents, call analytics, reporting, and contact centre workflows.",
+      "Developing scalable dashboards and admin interfaces with React, Next.js, and TypeScript.",
+      "Working across routing workflows, integrations, and role-based admin systems.",
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "AI Agents"],
+  },
+  {
+    id: "visnext",
     company: "Visnext Software Solutions",
+    companyUrl: "https://www.visnext.com/",
     role: "Software Engineer",
-    period: "2024 — Present",
+    period: "June 2024 — June 2026",
     description:
-      "Working at a full-cycle custom software development company focused on delivering high-quality web and mobile solutions across industries. Responsible for improving application performance, security, and scalability while mentoring team members.",
+      "Built production-ready web and mobile solutions for client projects, focusing on full-stack development, dashboards, APIs, admin systems, performance, and deployment workflows.",
     highlights: [
-      "Optimized application performance, making key products faster and more secure",
-      "Led and supported a team of 2 engineers, improving code quality and delivery speed",
-      "Architected scalable backend and frontend systems to handle increased load",
+      "Built and improved full-stack product features across React, Django, Python, and TypeScript applications.",
+      "Developed dashboards, admin portals, API-driven workflows, and client-facing production features.",
+      "Improved application performance, security, scalability, and delivery quality through code reviews and technical guidance.",
     ],
-    technologies: ["Python", "TypeScript", "React", "Django", "DigitalOcean", "CI/CD"],
+    technologies: ["React", "TypeScript", "Python", "Django", "FastAPI", "PostgreSQL", "CI/CD"],
   },
   {
-    id: "2",
+    id: "gripo",
     company: "Gripo.io",
-    role: "React Developer",
-    period: "2022 — 2024",
+    companyUrl: "https://gripo.io/",
+    role: "Frontend Engineer",
+    period: "November 2022 — June 2024",
     description:
-      "Worked for a cloud-native automation and Kubernetes management platform that helps teams deploy and operate multi-cloud infrastructure with ease. Built scalable, optimized frontend solutions and contributed to backend logic where needed.",
+      "Built frontend systems for a DevOps workflow automation platform covering visual workflows, cloud automation, Kubernetes operations, plugin integrations, and infrastructure dashboards.",
     highlights: [
-      "Designed and built scalable frontend architecture using Next.js, improving page responsiveness",
-      "Increased overall web performance by 40% through optimization efforts",
-      "Collaborated with cloud services including AWS, Azure, and DigitalOcean integrations",
+      "Built scalable frontend architecture with React and Next.js for cloud and workflow automation features.",
+      "Improved web performance by 40% through rendering optimization, component refactoring, and frontend performance fixes.",
+      "Created reusable UI components and product flows for workflow builders, plugins, and infrastructure management.",
     ],
-    technologies: ["Next.js", "React", "Go (backend)", "Azure", "AWS", "DigitalOcean"],
+    technologies: ["React", "Next.js", "TypeScript", "Kubernetes UI", "Workflow Automation", "AWS"],
   },
   {
-    id: "3",
-    company: "Web Development Intern & Freelance",
-    role: "Web Developer",
-    period: "2020 — 2022",
+    id: "freelance",
+    company: "Internship & Freelance Projects",
+    role: "Web Developer / Freelance Developer",
+    period: "June 2021 — November 2022",
     description:
-      "Completed internships and freelance projects building custom websites and web applications for small businesses and individual clients. Focused on delivering polished UI, responsive design, and reliable functionality.",
+      "Built websites, landing pages, and custom web applications for small businesses, individual clients, and early-stage projects.",
     highlights: [
-      "Delivered multiple client projects on time with positive feedback",
-      "Built responsive and interactive web interfaces using modern JavaScript frameworks",
-      "Communicated directly with clients to gather requirements and deliver results",
+      "Delivered responsive websites and interactive web apps using HTML, CSS, JavaScript, and React.",
+      "Handled client communication, requirements gathering, revisions, and final delivery independently.",
+      "Built a strong foundation in UI implementation, responsive design, debugging, and project ownership.",
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "React", "Frontend Frameworks"],
+    technologies: ["HTML", "CSS", "JavaScript", "React", "Responsive Design"],
   },
 ];
