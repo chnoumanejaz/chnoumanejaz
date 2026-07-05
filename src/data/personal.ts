@@ -5,11 +5,11 @@ export const personalData = {
   tagline: "Building reliable software for startups",
   bio: "I'm a software engineer with 4+ years of experience helping startups turn rough ideas into polished web apps, scalable APIs, dashboards, automation, and integrations.",
   email: "noumanejaz92@gmail.com",
-  location: "Multan, Pakistan",
+  location: "Pakistan · Remote-first",
   available: true,
   avatarUrl: "/nouman.jpeg",
   resumeUrl: "#",
-  calendarUrl: "https://calendly.com/yourusername",
+  calendarUrl: "https://calendly.com/noumanejaz92/call-with-nouman-ejaz",
   social: {
     github: "https://github.com/chnoumanejaz",
     linkedin: "https://www.linkedin.com/in/chnoumanejaz/",

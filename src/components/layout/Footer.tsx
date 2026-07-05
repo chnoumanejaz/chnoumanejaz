@@ -31,13 +31,12 @@ export function Footer() {
           {/* CTA / Engage */}
           <div className="md:col-span-5">
             <h3 className="font-heading text-2xl sm:text-3xl font-bold leading-tight">
-              Let's build something
+              Let&apos;s build 
               <br />
-              <span className="text-primary">amazing together.</span>
+              <span className="text-primary">production-ready products.</span>
             </h3>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-sm">
-              I'm currently available for freelance work and full-time positions. 
-              If you have a project that needs some creative magic, let's talk.
+            I&apos;m open to remote full-stack roles, freelance projects, and product teams building SaaS dashboards, APIs, admin portals, and automation workflows.
             </p>
             <a
               href="#contact"

@@ -76,7 +76,7 @@ export function HeroSidebar() {
 
       <div className="text-center mb-6">
         <h2 className="font-heading text-xl font-bold">{personalData.name}</h2>
-        <p className="text-xs text-muted-foreground mt-1">Based in {personalData.location} · Remote-first</p>
+        <p className="text-xs text-muted-foreground mt-1">Based in {personalData.location}</p>
       </div>
 
       <div className="space-y-2.5 mb-6">

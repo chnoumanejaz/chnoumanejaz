@@ -22,8 +22,8 @@ export function ContactSection() {
       <div className="container mx-auto px-4 sm:px-6">
         <ScrollAnimation>
           <SectionHeading
-            title="Get In Touch"
-            subtitle="Have a project in mind or just want to say hello? I'd love to hear from you."
+            title="Let&apos;s Work Together"
+            subtitle="Looking for a full-stack engineer to build SaaS dashboards, APIs, admin portals, or automation workflows? I&apos;m open to remote roles, freelance projects, and serious product opportunities."
           />
         </ScrollAnimation>
 
@@ -52,7 +52,7 @@ export function ContactSection() {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out!
+              Send me a message with what you&apos;re building, what stage it&apos;s in, and where you need engineering help. I&apos;ll get back with a clear response.
               </p>
               
               <div className="pt-4">
