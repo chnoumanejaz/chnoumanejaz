@@ -5,6 +5,7 @@ export interface ProjectImage {
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   description: string;
   badges: string[];
@@ -22,6 +23,7 @@ export interface Project {
 export const projectsData: Project[] = [
   {
     id: "1",
+    slug: "cloudsync-dashboard",
     title: "CloudSync Dashboard",
     description:
       "A real-time analytics dashboard for cloud infrastructure monitoring with interactive charts, alert management, and team collaboration features.",
@@ -38,6 +40,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "2",
+    slug: "ai-content-studio",
     title: "AI Content Studio",
     description:
       "An AI-powered content creation platform with natural language processing, image generation, and smart content scheduling.",
@@ -54,6 +57,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "3",
+    slug: "devflow-cli",
     title: "DevFlow CLI",
     description:
       "A command-line tool for automating development workflows — scaffolding, linting, deployment, and environment management in one package.",
@@ -70,6 +74,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "4",
+    slug: "ecotrack-mobile",
     title: "EcoTrack Mobile",
     description:
       "A sustainability tracking app that helps users monitor and reduce their carbon footprint through daily habit tracking and community challenges.",
@@ -85,3 +90,7 @@ export const projectsData: Project[] = [
     outcome: "Currently in beta with 500+ users. Average daily engagement of 12 minutes. Users report 25% reduction in estimated carbon footprint after 30 days of use.",
   },
 ];
+
+export function getProjectBySlug(slug: string) {
+  return projectsData.find((project) => project.slug === slug);
+}

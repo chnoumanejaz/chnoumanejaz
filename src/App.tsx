@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
 import BlogPost from "./pages/BlogPost";
 import BlogListing from "./pages/BlogListing";
+import ProjectDetail from "./pages/ProjectDetail";
 import Tools from "./pages/Tools";
 import JsonFormatterPage from "./pages/tools/JsonFormatterPage";
 import ColorPalettePage from "./pages/tools/ColorPalettePage";
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/tools/color-palette" element={<ColorPalettePage />} />
               <Route path="/tools/regex-tester" element={<RegexTesterPage />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
