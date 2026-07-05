@@ -1,10 +1,10 @@
-import { Github, Linkedin, X as XIcon, Mail, Download, Mouse } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Github, Linkedin, X as XIcon, Mail, Download, Mouse, Code2, Globe2, Layers3 } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalData } from "@/data/personal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
-import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 
 const socialLinks = [
   { label: "GitHub", icon: Github, href: personalData.social.github },
@@ -12,6 +12,14 @@ const socialLinks = [
   { label: "X", icon: XIcon, href: personalData.social.x },
   { label: "Email", icon: Mail, href: personalData.social.email },
 ];
+
+const profileHighlights = [
+  { icon: Globe2, label: "Available for Remote Roles" },
+  { icon: Layers3, label: "Full Stack / Frontend / Backend" },
+  { icon: Code2, label: "React · Next.js · Node.js · Django · FastAPI" },
+];
+
+const HERO_SIDEBAR_VISIT_KEY = "portfolio-nouman-hero-sidebar-visited";
 
 function StatCounter({ value, label, index }: {value: string;label: string;index: number;}) {
   return (
@@ -28,6 +36,21 @@ function StatCounter({ value, label, index }: {value: string;label: string;index
 }
 
 export function HeroSidebar() {
+  const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
+
+  useEffect(() => {
+    try {
+      const hasVisited = window.localStorage.getItem(HERO_SIDEBAR_VISIT_KEY) === "true";
+      setHasVisitedBefore(hasVisited);
+
+      if (!hasVisited) {
+        window.localStorage.setItem(HERO_SIDEBAR_VISIT_KEY, "true");
+      }
+    } catch {
+      setHasVisitedBefore(false);
+    }
+  }, []);
+
   return (
     <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-lg py-[32px]">
       <div className="relative w-28 h-28 mx-auto mb-5">
@@ -53,8 +76,21 @@ export function HeroSidebar() {
 
       <div className="text-center mb-6">
         <h2 className="font-heading text-xl font-bold">{personalData.name}</h2>
-        <p className="text-sm text-muted-foreground mt-1">{personalData.role}</p>
-        <p className="text-xs text-muted-foreground mt-1">{personalData.location}</p>
+        <p className="text-xs text-muted-foreground mt-1">Based in {personalData.location} · Remote-first</p>
+      </div>
+
+      <div className="space-y-2.5 mb-6">
+        {profileHighlights.map(({ icon: Icon, label }) =>
+        <div
+          key={label}
+          className="flex items-center gap-3 rounded-xl border border-border/70 bg-secondary/45 px-3.5 py-3 text-left">
+
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <Icon className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-medium leading-snug text-foreground">{label}</span>
+          </div>
+        )}
       </div>
 
       <div className="flex items-center justify-center gap-2 mb-6">
@@ -79,11 +115,13 @@ export function HeroSidebar() {
 
       <div className="flex flex-col gap-2.5">
         <Button className="w-full rounded-xl" asChild>
-          <a href="#contact">Contact Me</a>
+          <a href={hasVisitedBefore ? "#contact" : "#projects"}>
+            {hasVisitedBefore ? "Contact Me" : "View Projects"}
+          </a>
         </Button>
         <Button variant="outline" className="w-full gap-2 rounded-xl" asChild>
           <a href={personalData.resumeUrl}>
-            <Download className="h-4 w-4" /> Download CV
+            <Download className="h-4 w-4" /> Download Resume
           </a>
         </Button>
       </div>
@@ -93,7 +131,6 @@ export function HeroSidebar() {
 
 
 export function HeroSection() {
-  const { displayed, done } = useTypingAnimation(personalData.role, 100, 800);
   return (
     <section id="about" className="min-h-screen flex items-center pt-20 pb-16 mx-[24px] scroll-mt-24">
       <div className="w-full">
@@ -110,26 +147,14 @@ export function HeroSection() {
               {personalData.name}
               <span className="text-primary">.</span>
             </h1>
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground mt-2 min-h-[1.5em]">
-              {displayed}
-              {!done &&
-              <motion.span
-                className="inline-block w-[3px] h-[0.9em] bg-primary ml-0.5 align-middle"
-                animate={{ opacity: [1, 0] }}
-                transition={{ repeat: Infinity, duration: 0.7 }} />
-
-              }
+            <h2 className="font-heading text-xl sm:text-2xl lg:text-2xl font-semibold text-muted-foreground mt-3 min-h-[2.5em] leading-snug max-w-3xl">
+              {personalData.heroHeadline}
             </h2>
           </ScrollAnimation>
 
           <ScrollAnimation animation="fade-up" delay={200}>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              I help startups turn rough ideas into reliable software: polished web apps,
-              scalable APIs, dashboards, automation, and integrations that move the business
-              forward. With{" "}
-              <span className="text-foreground font-semibold">4+ years of hands-on experience</span>,
-              I bring the product sense and engineering discipline to ship clean, fast systems
-              users can trust.
+            I turn rough ideas into reliable products, from polished frontend interfaces and dashboards to scalable APIs, admin portals, and integrations.
             </p>
           </ScrollAnimation>
 

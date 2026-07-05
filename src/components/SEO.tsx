@@ -14,6 +14,8 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Nouman Ejaz";
+const DEFAULT_TITLE =
+  "Nouman Ejaz - Full Stack Engineer building SaaS, dashboards & automation systems with React, Next.js, Node.js & Django.";
 const DEFAULT_DESCRIPTION =
   "Software Engineer building reliable web apps, scalable APIs, dashboards, automation, and developer tools.";
 const SITE_URL = "https://noumanejaz.com";
@@ -27,7 +29,7 @@ export function SEO({
   article,
   jsonLd,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Software Engineer`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
 
   return (

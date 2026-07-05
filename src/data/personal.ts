@@ -1,10 +1,11 @@
 export const personalData = {
   name: "Nouman Ejaz",
   role: "Software Engineer",
+  heroHeadline: "Full Stack Engineer building SaaS, dashboards & automation systems with React, Next.js, Node.js & Django.",
   tagline: "Building reliable software for startups",
   bio: "I'm a software engineer with 4+ years of experience helping startups turn rough ideas into polished web apps, scalable APIs, dashboards, automation, and integrations.",
   email: "noumanejaz92@gmail.com",
-  location: "Lahore, Pakistan",
+  location: "Multan, Pakistan",
   available: true,
   avatarUrl: "/nouman.jpeg",
   resumeUrl: "#",
@@ -17,8 +18,8 @@ export const personalData = {
   },
   stats: [
     { label: "Years Experience", value: "4+" },
-    { label: "Projects Completed", value: "30+" },
-    { label: "Technologies", value: "20+" },
-    { label: "Coffee Cups", value: "∞" },
+    { label: "Projects Delivered", value: "30+" },
+    { label: "Production Deployments", value: "10+" },
+    { label: "SaaS/Admin Systems", value: "5+" },
   ],
 };
