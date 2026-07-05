@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Send, Mail, MapPin, Phone, User, MessageSquare, CheckCircle, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -8,13 +8,39 @@ import { personalData } from "@/data/personal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 
+const formspreeEndpoint = "https://formspree.io/f/mrewjaoj";
+
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: new FormData(e.currentTarget),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send message");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setSubmitError("Something went wrong while sending your message. Please try again or email me directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -74,14 +100,18 @@ export function ContactSection() {
               {!submitted ? (
                 <motion.form
                   key="form"
+                  action={formspreeEndpoint}
+                  method="POST"
                   onSubmit={handleSubmit}
                   className="space-y-4"
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                 >
+                  <input type="hidden" name="_subject" value="New portfolio contact message" />
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
+                      name="name"
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -92,6 +122,7 @@ export function ContactSection() {
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
+                      name="email"
                       type="email"
                       placeholder="Your Email"
                       value={formData.email}
@@ -103,6 +134,7 @@ export function ContactSection() {
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
+                      name="phone"
                       type="tel"
                       placeholder="Your Phone Number"
                       value={formData.phone}
@@ -113,6 +145,7 @@ export function ContactSection() {
                   <div className="relative">
                     <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Textarea
+                      name="message"
                       placeholder="Your Message"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -121,8 +154,13 @@ export function ContactSection() {
                       className="rounded-xl bg-card border-border resize-none pl-10"
                     />
                   </div>
-                  <Button type="submit" className="w-full rounded-xl gap-2">
-                    <Send className="h-4 w-4" /> Send Message
+                  {submitError && (
+                    <p className="text-sm text-destructive" role="alert">
+                      {submitError}
+                    </p>
+                  )}
+                  <Button type="submit" className="w-full rounded-xl gap-2" disabled={submitting}>
+                    <Send className="h-4 w-4" /> {submitting ? "Sending..." : "Send Message"}
                   </Button>
                 </motion.form>
               ) : (
