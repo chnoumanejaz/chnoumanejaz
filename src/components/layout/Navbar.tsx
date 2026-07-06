@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -18,17 +18,9 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const activeSection = useActiveSection();
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -44,30 +36,17 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center">
-      {/* Outer wrapper for positioning - always centered */}
-      <div
-        className={cn(
-          "transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] mt-0",
-          scrolled ? "mt-4 max-w-fit" : "w-full"
-        )}
-      >
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
+      <div className="mt-4 w-full max-w-fit transition-all duration-300 ease-out">
         <nav
           className={cn(
-            "flex items-center transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
-            "backdrop-blur-xl border shadow-lg shadow-black/5 dark:shadow-black/20",
-            scrolled
-              ? "gap-2 px-5 py-2.5 rounded-full bg-background/60 border-white/[0.08]"
-              : "gap-6 px-6 sm:px-10 lg:px-16 py-4 rounded-none bg-background/40 border-white/[0.05] border-b"
+            "flex items-center transition-all duration-300 ease-out",
+            "gap-2 rounded-full border border-white/[0.12] bg-background/55 px-5 py-2.5 shadow-lg shadow-black/5 backdrop-blur-xl supports-[backdrop-filter]:bg-background/45 dark:border-white/[0.08] dark:shadow-black/20"
           )}
         >
-          {/* Logo - slides inward */}
           <a
             href="#"
-            className={cn(
-              "font-heading text-xl sm:text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-all duration-700 flex-shrink-0",
-              scrolled ? "mr-2" : "mr-auto"
-            )}
+            className="mr-2 flex-shrink-0 font-heading text-xl font-bold tracking-tight text-foreground transition-colors hover:text-primary sm:text-2xl"
           >
             NE<span className="text-primary">.</span>
           </a>
@@ -99,13 +78,7 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right side - slides inward */}
-          <div
-            className={cn(
-              "hidden md:flex items-center gap-1 flex-shrink-0 transition-all duration-700",
-              scrolled ? "ml-2" : "ml-auto"
-            )}
-          >
+          <div className="ml-2 hidden flex-shrink-0 items-center gap-1 md:flex">
             <AccentSwitcher />
             <ThemeToggle />
           </div>
